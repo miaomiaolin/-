@@ -1,0 +1,113 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="perBook.master.cs" Inherits="perBook" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <meta charset="UTF-8"/>
+	<title>我的图书-个人中心</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<script type="text/javascript">
+	</script>
+</head>
+<body>
+    <form id="listform" method="post" action="" runat="server">
+    <div class="header">
+	<div class="header_in">
+		<div class="top">
+			<div class="top_in">
+				<span>你好，<%=user_name %>&nbsp|</span>
+				<span><a href="userLogin.htm">退出</a></span>
+			</div>
+		</div>
+		<div class="head">
+			<div class="logo">
+				<img src="img/icon/logo.jpg" alt="logo">
+			</div>
+			<div class="search">
+				<input type="text" name="search" placeholder="请输入书籍名称" value=""/>
+				<a href="detailPage.aspx?id=<%=bookId %>"><img src="img/icon/search.jpg" alt="search" id="IMG1" runat="server"/></a>
+			</div>
+		</div>
+		<div class="nav">
+			<ul>
+				<li><a href="index.aspx"  name="nav">首页</a></li>
+				<li><a href="typePage.aspx?id=1">文学</a></li>
+				<li><a href="typePage.aspx?id=2">小说</a></li>
+				<li><a href="typePage.aspx?id=3">工具书</a></li>
+				<li><a href="memberPage.aspx">会员专区</a></li>
+			</ul>
+			<li class="mybook"><a href="#">我的书架</a></li>
+		</div>
+	</div>
+</div>
+<div class="main_personal">
+	<div class="personal_in">
+		<div class="per_left fl">
+			<div class="u_info">
+				<div class="u_img">
+					<img src="<%=myimg %>"/>
+				</div>
+				<p class="per_name"><%=user_name%></p>
+				<%=member %>
+				<p class="per_mon">余额：<%=balance %>元</p>
+			</div>
+			<ul class="per_nav">
+				<li ><a href="bookself.aspx">我的图书</a></li>
+				<li><a href="per_member.aspx">会员充值</a></li>
+				<li><a href="per_info.aspx" onclick="">个人信息</a></li>
+			</ul>
+		</div>
+		<div class="per_right fl">
+			<asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+            </asp:contentplaceholder>
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<div class="footer_in">
+		<p>如有问题欢迎联系17774005385</p>
+		<ul>
+			<li>&copy;2017</li>
+			<li><a href="#" onclick="alert('注销账号、忘记密码、充值疑问都可联系管理员17774005385');">使用123阅读网前必读</a>&nbsp|&nbsp</li>
+			<li><a href="#" onclick="alert('本平台为在线阅读网站，在使用本平台过程中如有疑问都可联系管理员17774005385');">关于我们</a>&nbsp|&nbsp</li>
+			<li><a href="#nav">网站导航</a>&nbsp|&nbsp</li>
+			<li><a href="#" onclick="alert('请联系17774005385');">商务合作</a></li>
+		</ul>
+	</div>
+</div>
+ </form>
+    <script type="text/javascript">
+         function search(){
+                    var form1 =document.getElementById('listform');
+                    form1.action='bookself.aspx?action=search';
+                    form1.submit();
+                }
+   function Add(){
+			var request = $.ajax({  
+                url: "AddAdminUser.ashx",  
+                type: "POST",  
+                async: false,  
+                data: _json, //不能直接写成 {id:"123",code:"tomcat"}  
+                dataType: "json",  
+                // contentType: "charset=utf-8",  
+                cache: false,  
+                success: function (data) {  
+                    var json=data;
+                    debugger;
+                     if(json.loginok=="1")
+                     {
+                       alert("新增管理员成功！");
+                       window.location.href="EditAdminUsers.aspx";  
+                     }
+                     else
+                     {
+                                               
+                     }
+                },  
+                error: function (XMLHttpRequest, textStatus, errorThrown) { alert(XMLHttpRequest.readyState); }  
+            }); 
+		}
+    </script>
+</body>
+</html>
