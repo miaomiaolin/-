@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8"/>
+	<title>管理员登录页</title>
+	<link rel="stylesheet" type="text/css" href="../css/normalize.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<script type="text/javascript">
+	 function login()
+        {
+            var txtName =document.getElementById("username");
+            var txtPwd =document.getElementById("password");
+            if(txtName.value == '')
+            {
+                alert('账号不能为空！');
+                txtName.focus();
+                return false;
+            }
+            if(txtPwd.value == '')
+            {
+                alert('密码不能为空！');
+                txtPwd.focus();
+                return false;
+            }
+            document.getElementById('form1').submit();
+        }
+	</script>
+</head>
+<body>
+<form method="post" action="AdminLogin.ashx" id="form1">
+    <div class="login_main">
+			<div class="login_logo">
+				<img src="../img/icon/logo_login.jpg"/>
+				<p>欢迎来到123阅读网</p>
+			</div>
+			
+			<div class="login_user">
+				<span>账号：</span>
+				<input type="text" name="login_user" placeholder="输入账号" id="username">
+			</div>
+			<div class="login_pwd">
+				<span>密码：</span>
+				<input type="password" name="login_pwd" placeholder="输入密码" id="password">
+			</div>
+			
+			<input class="login_submit" type="button" value="登录" style="border:none;cursor:pointer;" onclick="login()"/>
+	</div>
+</form>
+</body>
+</html>

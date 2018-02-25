@@ -1,0 +1,101 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="adminIndex.master.cs" Inherits="admin_adminIndex" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>我的后台</title>
+    <link rel="stylesheet" type="text/css" href="../css/admin.css" />
+</head>
+<body>
+   <%-- <form id="form1" runat="server">--%>
+        <div class="admin">
+            <div class="header">
+                <h2 class="fl">
+                    123阅读网后台</h2>
+                <div class="headRight fr">
+                    <div class="logUser fl">
+                        <span>当前用户：</span> <span><%=adminName %></span>
+                    </div>
+                    <a class="logout" href="login.htm">退出</a>
+                </div>
+            </div>
+            <div class="left1">
+                <p id="user">
+                    <img src="img/adminUser.png" alt="用户管理" /></p>
+                <p id="banner">
+                    <img src="img/adminBanner.png" alt="轮播图管理"/></p>
+                <p id="type">
+                    <img src="img/adminType.png" alt="类别管理" /></p>
+                <p id="book">
+                    <img src="img/adminBook.png" alt="书籍管理" /></p>
+            </div>
+            <div class="mask" id="mask">
+            </div>
+            <div class="left2" id="sidebar" style="z-index:5;">
+                <ul id="userIn">
+                    <h4>用户管理</h4>
+                    <li id="adminAdd" runat="server" onclick="window.location.href='AddAdminUser.aspx'">新增管理员</li>
+                    <li id="adminEit" runat="server" onclick="window.location.href='EditAdminUsers.aspx'">管理员编辑</li>
+                    <li onclick="window.location.href='EditUsers.aspx'">用户编辑</li>
+                </ul>
+                <ul id="bannerIn">
+                    <h4>轮播图管理</h4>
+                    <li onclick="window.location.href='AddBanner.aspx'">新增轮播图</li>
+                    <li onclick="window.location.href='EditBanner.aspx'">轮播图编辑</li>
+                </ul>
+                <ul id="typeIn">
+                    <h4>类别管理</h4>
+                    <li onclick="window.location.href='EditTypes.aspx'">类别编辑</li>
+                </ul>
+                <ul id="bookIn">
+                    <h4>书籍管理</h4>
+                    <li onclick="window.location.href='AddBook.aspx'">添加书籍</li>
+                    <li onclick="window.location.href='EditBooks.aspx'">书籍编辑</li>
+                </ul>
+            </div>
+            <div class="right">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+<%--    </form>--%>
+
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+
+    <script type="text/javascript">
+		$(function(){
+
+			$(".left1 p").click(function(){
+				$('#sidebar').css("left","0");
+				$('#mask').css("display","inline-block");
+				       
+		   	    if($(this).attr("id")=="user"){
+					$('#userIn').css("display","inline-block");
+					$('#bannerIn').css("display","none");
+					$('#typeIn').css("display","none");
+					$('#bookIn').css("display","none");
+				}else if ($(this).attr("id")=="banner") {
+					$('#bannerIn').css("display","inline-block");
+					$('#typeIn').css("display","none");
+					$('#bookIn').css("display","none");
+					$('#userIn').css("display","none");
+				}else if ($(this).attr("id")=="type") {
+					$('#typeIn').css("display","inline-block");
+					$('#userIn').css("display","none");
+					$('#bannerIn').css("display","none");
+					$('#bookIn').css("display","none");
+				}else if ($(this).attr("id")=="book") {
+					$('#bookIn').css("display","inline-block");
+					$('#userIn').css("display","none");
+					$('#bannerIn').css("display","none");
+					$('#typeIn').css("display","none");
+				}
+			})
+			$('#mask').on('click',function(){
+					$('#sidebar').css("left","-150px");
+					$('#mask').css("display","none");
+			})
+	})
+    </script>
+
+</body>
+</html>

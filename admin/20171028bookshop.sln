@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "E:\毕设\20171128book后台shop\", ".", "{E0C1B407-6D95-41C8-B90F-F9A1D203BF8D}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/20171019bookshop"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\桌面\20171019bookshop\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\20171019bookshop\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/20171019bookshop"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\桌面\20171019bookshop\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\20171019bookshop\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "36257"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0C1B407-6D95-41C8-B90F-F9A1D203BF8D}.Debug|.NET.ActiveCfg = Debug|.NET
+		{E0C1B407-6D95-41C8-B90F-F9A1D203BF8D}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
