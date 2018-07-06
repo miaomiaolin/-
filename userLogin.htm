@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+	<title>用户登录</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<style type="text/css">
+		.userLogin{
+			background: #eee url(img/bg1.jpg) no-repeat;
+		}
+	</style>
+</head>
+<body>
+<div class="uLog">
+		<div class="userLogin" id="userLogin">	
+		</div>
+		<div class="mark"></div>
+		<div class="userLoginIn">
+			<div class="message fl active" id="onLog" onclick="thisLog();">登录</div>
+			<div class="message fr " id="onReg" onclick="thisReg();">注册</div>
+			<form method="post" action="useLogin.ashx" id="form1">
+				<div id="theLogin">
+					<input id="username" class="form_login pass" name="username" placeholder="用户名"  type="text"/>
+					<input id="password" class="form_login pass" name="password" placeholder="密码"  type="password"/>
+					<input class="form_login useLogBtn" value="登录" type="button" onclick="login()"/>
+					<a class="passForget fr" onclick="alert('请联系管理员17774005385')">忘记密码</a>
+				</div>
+				<div id="theReg" style="display: none;">
+					<input class="form_login pass" name="regName" placeholder="用户名"  type="text" id="regName"/>
+					<input class="form_login pass" name="regPwd1" placeholder="密码"  type="password" id="regPwd1"/>
+					<input class="form_login pass" name="regPwd2" placeholder="确认密码"  type="password"  id="regPwd2"/>
+					<input class="form_login useLogBtn" value="注册" type="button" onclick="AddUser();"/>
+				</div>
+			</form>		
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+	bgChange();
+function AddUser(){
+			var regName=document.getElementById("regName").value;//名称
+			var onePwd=document.getElementById("regPwd1").value;//第一次输入密码	
+			var regPwd=document.getElementById("regPwd2").value;//密码	
+			if(onePwd !=regPwd){
+			    alert('两次密码不一致！');
+			    return;
+			}					
+			
+			var _json = jQuery.param({ "regName": regName,"regPwd":regPwd});
+			var request = $.ajax({  
+                url: "userReg.ashx",  
+                type: "POST",  
+                async: false,  
+                data: _json, //不能直接写成 {id:"123",code:"tomcat"}  
+                dataType: "json",  
+                // contentType: "charset=utf-8",  
+                cache: false,  
+                success: function (data) {  
+                    var json=data;
+                    debugger;
+                     if(json.loginok=="1")
+                     {
+                       alert("注册成功！");
+                       window.location.href="userLogin.htm";  
+                     }
+                     else
+                     {
+                        alert('对不起，请重新注册。');                        
+                     }
+                },  
+                error: function (XMLHttpRequest, textStatus, errorThrown) { alert(XMLHttpRequest.readyState); }  
+            }); 
+		}
+        function login()
+        {
+            var txtName =document.getElementById("username");
+            var txtPwd =document.getElementById("password");
+            if(txtName.value == '')
+            {
+                alert('账号不能为空！');
+                txtName.focus();
+                return false;
+            }
+            if(txtPwd.value == '')
+            {
+                alert('密码不能为空！');
+                txtPwd.focus();
+                return false;
+            }
+            document.getElementById('form1').submit();
+        }
+		    
+    </script>
+</html>
